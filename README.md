@@ -1,8 +1,8 @@
-# blank
+# Deszczownie.pl
 
-blank
+A website with modern stack.
 
-## Attributes
+## Stack
 
-- **Database**: mongodb
-- **Storage Adapter**: localDisk
+- **Frontend**: React & Next.js
+- **Backend**: PayloadCMS, PostgreSQL
