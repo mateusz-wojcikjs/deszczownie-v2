@@ -1,0 +1,71 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@utility container {
+    margin-inline: auto;
+    padding-inline: 2rem;
+}
+
+@theme {
+    /*--color-primary-500: rgb(37, 109, 27);*/
+    --color-primary-500: rgb(24, 35, 35);
+    --color-secondary-500: rgb(37, 55, 69);
+    --color-secondary-300: rgb(130, 130, 130);
+    --color-secondary-400: rgb(68, 68, 68);
+}
+
+.button {
+    @apply px-6 py-3 duration-300 border rounded-xl;
+    position: relative;
+    display: inline-block;
+    transition:
+        border-color ease 300ms,
+        color ease 300ms,
+        background-color ease 300ms;
+}
+
+.button.button--primary {
+    @apply bg-primary-500 border-white hover:bg-white hover:text-primary-500 hover:border-primary-500 text-white cursor-pointer;
+}
+
+.button.button--primary-transparent {
+    @apply bg-transparent border-green-700 border-2 hover:bg-green-700 text-white cursor-pointer;
+}
+
+.button.button--primary-border {
+    @apply bg-primary-500 border-primary-500 hover:bg-white hover:text-primary-500 hover:border-primary-500 text-white;
+}
+
+.button.button--secondary {
+    @apply bg-white border-primary-500 hover:bg-primary-500 hover:text-white hover:border-primary-500 text-primary-500;
+}
+
+.zoom-effect {
+    transition: all 300ms ease;
+}
+
+.zoom-effect img {
+    transition: all 300ms ease;
+}
+
+.zoom-effect:hover img {
+    transform: scale(1.075);
+}
+
+.product-content {
+    h2 {
+        @apply text-2xl lg:text-4xl text-secondary-500 mb-4 font-light;
+    }
+
+    h2 ~ h2 {
+        @apply mt-8;
+    }
+
+    .image-block {
+        @apply mt-8 mb-12 relative before:absolute before:left-4 before:top-4 before:w-full before:h-full before:block before:bg-green-700/20 before:rounded-xl;
+
+        img {
+            @apply rounded-xl;
+        }
+    }
+}

@@ -1,18 +1,31 @@
 import React from 'react'
-import './styles.css'
+import './globals.css'
+import { Footer } from '@/app/(frontend)/components/footer'
+import { Cta } from '@/app/(frontend)/components/cta'
+import { Navigation } from '@/app/(frontend)/components/navigation'
+import { Poppins } from 'next/font/google'
 
 export const metadata = {
   description: 'A blank template using Payload in a Next.js app.',
   title: 'Payload Blank Template',
 }
 
+const poppins = Poppins({
+  weight: ['300', '400', '500', '600', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+})
+
 export default async function RootLayout(props: { children: React.ReactNode }) {
   const { children } = props
 
   return (
     <html lang="pl">
-      <body className='bg-amber-400'>
+      <body className={poppins.className}>
+      <Navigation />
         <main>{children}</main>
+        <Cta />
+        <Footer />
       </body>
     </html>
   )

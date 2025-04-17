@@ -1,0 +1,22 @@
+.field-table-row {
+  display: flex;
+  gap: 8px;
+}
+
+.field-table {
+  tr .field-type__wrap input {
+    background: transparent;
+  }
+  td {
+    padding: 8px 12px;
+  }
+}
+
+.field-table__cell {
+  height: 40px;
+
+  .btn {
+    margin: 0;
+    width: 100%;
+  }
+}
