@@ -7,89 +7,113 @@ import { JSX } from 'react'
 import { CategorySidebar, ProductItemList } from '@/app/(frontend)/components'
 import { Page, Product } from '@/payload-types'
 import { CmsCategory } from '@/app/(frontend)/interfaces'
+import { Hero } from '../../components/hero'
 
 interface PageProps {
   slug: string[]
 }
 
 interface OfferProps {
-  params: PageProps;
+  params: PageProps
 }
 
-export default async function Offer(props: Promise<OfferProps>) {
-  const { params }: OfferProps = await props;
-  const { slug }: PageProps = params;
-  const payload: BasePayload = await getPayload({ config });
-  const mergedSlug: string = slug ? slug.join('/') : 'home';
-  const slugSegments: string[] = slug || [];
-  const lastSegment: string = slugSegments[slugSegments.length - 1];
+export default async function Offer({ params }: OfferProps) {
+  const { slug }: PageProps = params
+  const payload: BasePayload = await getPayload({ config })
+  const mergedSlug: string = slug ? slug.join('/') : 'home'
+  const slugSegments: string[] = slug || []
+  const lastSegment: string = slugSegments[slugSegments.length - 1]
   const productData = await payload.find({
     collection: 'products',
     where: { slug: { equals: lastSegment } },
-  });
-  const currentSlug: string = params.slug?.[params.slug.length - 1] || '';
+  })
+  const currentSlug: string = params.slug?.[params.slug.length - 1] || ''
 
   if (slug.length === 1) {
-    const offersPageData: PaginatedDocs<Page> = await payload.find({
-      collection: 'pages',
-      where: { slug: { equals: 'oferta/' + slug } },
-    });
+    const [offersPageData, categoryResult] = await Promise.all([
+      payload.find({
+        collection: 'pages',
+        where: { slug: { equals: 'oferta/' + slug } },
+      }),
+      payload.find({
+        collection: 'categories',
+        where: { slug: { equals: lastSegment } },
+      }),
+    ])
 
-    const page = offersPageData.docs?.[0];
+    const page = offersPageData.docs?.[0]
+    const category = categoryResult.docs?.[0]
 
-    if (!page) {
+    if (!page || !category) {
       return notFound()
     }
 
     return (
       <main>
-        {page?.blocks!.map((block): JSX.Element => <DynamicContent data={block} key={block.id} />)}
+        {typeof category.categoryImage !== 'number' && (
+          <Hero title={category.title} media={category.categoryImage} type="mediumImpact" />
+        )}
+        <div className="container flex pt-12 lg:py-16">
+          <div className="w-1/4 pr-6 hidden lg:block">
+            <CategorySidebar currentSlug={currentSlug} />
+          </div>
+          <div className="w-full lg:w-3/4 product-content">
+            {page?.blocks!.map(
+              (block): JSX.Element => (
+                <DynamicContent data={block} key={block.id} variant="offer" />
+              ),
+            )}
+          </div>
+        </div>
       </main>
-    );
+    )
   }
 
   if (slug.length === 2) {
-    const categoryResult: PaginatedDocs<CmsCategory> = await payload.find({
-      collection: 'categories',
-      where: { slug: { equals: lastSegment } },
-    })
-    const category: CmsCategory = categoryResult.docs?.[0];
+    const [categoryResult, offersPageData] = await Promise.all([
+      payload.find({
+        collection: 'categories',
+        where: { slug: { equals: lastSegment } },
+      }),
+      payload.find({
+        collection: 'pages',
+        where: { slug: { equals: 'oferta/' + mergedSlug } },
+      }),
+    ])
 
-    if (!category) {
+    const category = categoryResult.docs?.[0]
+    const page = offersPageData.docs?.[0]
+
+    if (!category || !page) {
       return notFound()
     }
-    const offersPageData = await payload.find({
-      collection: 'pages',
-      where: { slug: { equals: 'oferta/' + mergedSlug } },
-    })
 
-    const products: PaginatedDocs<Product> = await payload.find({
+    const products = await payload.find({
       collection: 'products',
       where: {
         category: {
           equals: category.id,
         },
       },
-    });
-
-    const page: Page = offersPageData.docs?.[0];
-
-    if (!page) {
-      return notFound()
-    }
+    })
 
     return (
       <div>
-        {page?.blocks!.map((block): JSX.Element => (
-          <DynamicContent data={block} key={block.id} />
-        ))}
+        {typeof category.categoryImage !== 'number' && (
+          <Hero title={category.title} media={category.categoryImage} type="mediumImpact" />
+        )}
         <div className="container flex pt-12 lg:py-16">
           <div className="w-1/4 pr-6 hidden lg:block">
             <CategorySidebar currentSlug={currentSlug} />
           </div>
           <div className="flex flex-col gap-4 w-full">
-            {products.docs.map((product: Product): JSX.Element => {
-              return (
+            {page?.blocks!.map(
+              (block): JSX.Element => (
+                <DynamicContent data={block} key={block.id} variant="offer" />
+              ),
+            )}
+            {products.docs.map(
+              (product: Product): JSX.Element => (
                 <ProductItemList
                   key={product.id}
                   url={`${category.slug}/${product.slug}`}
@@ -97,8 +121,8 @@ export default async function Offer(props: Promise<OfferProps>) {
                   thumbnail={product.image}
                   tableData={product.table}
                 />
-              )
-            })}
+              ),
+            )}
           </div>
         </div>
       </div>
@@ -114,9 +138,9 @@ export default async function Offer(props: Promise<OfferProps>) {
               <CategorySidebar currentSlug={currentSlug} />
             </div>
             <div className="lg:w-3/4 product-content">
-              {productData?.docs[0]?.blocks?.map((block): JSX.Element => (
-                <DynamicContent data={block} key={block.id} />
-              ))}
+              {productData?.docs[0]?.blocks?.map(
+                (block): JSX.Element => <DynamicContent data={block} key={block.id} />,
+              )}
             </div>
           </div>
         </ProductPage>
@@ -124,5 +148,5 @@ export default async function Offer(props: Promise<OfferProps>) {
     )
   }
 
-  return notFound();
+  return notFound()
 }

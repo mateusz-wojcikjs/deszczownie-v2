@@ -1,5 +1,7 @@
-export type { CmsHeroBlock } from './cmsHeroBlock.interface';
-export type { CmsTextBlock } from './cmsTextBlock.interface';
-export type { CmsTextWithImageBlock } from './cmsTextWithImageBlock.interface';
-export type { CmsImageBlock } from './cmsImageBlock.interface';
-export type { CmsProductMetaDataBlock } from './cmsProductMetaDataBlock.interface';
+export type { CmsHeroBlock } from './cmsHeroBlock.interface'
+export type { CmsTextBlock } from './cmsTextBlock.interface'
+export type { CmsTextWithImageBlock } from './cmsTextWithImageBlock.interface'
+export type { CmsImageBlock } from './cmsImageBlock.interface'
+export type { CmsProductMetaDataBlock } from './cmsProductMetaDataBlock.interface'
+export type { CmsProductDataWithImagesBlock } from './cmsProductDataWithImagesBlock.interface'
+export type { CmsTripleBoxesBlock } from './cmsTripleBoxesBlock.interface'

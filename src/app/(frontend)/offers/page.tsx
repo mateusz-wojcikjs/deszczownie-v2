@@ -5,25 +5,21 @@ import { Routing } from '@/app/(frontend)/enums/routing.enum'
 import { DynamicContent } from '@/app/(frontend)/components/dynamicContent'
 
 export default async function OffersPage() {
-  const payload = await getPayload({ config });
+  const payload = await getPayload({ config })
   const data = await payload.find({
     collection: 'pages',
     where: {
       slug: {
         equals: Routing.Offers,
-      }
-    }
-  });
+      },
+    },
+  })
 
-  const page = data.docs?.[0];
-
-  console.log('dupa 123')
+  const page = data.docs?.[0]
 
   if (!page) {
     return notFound()
   }
 
-  return (
-    page.blocks.map((block) => <DynamicContent data={block} key={block.id} />)
-  )
+  return (page.blocks ?? []).map((block) => <DynamicContent data={block} key={block.id} />)
 }

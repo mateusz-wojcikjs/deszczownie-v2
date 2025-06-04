@@ -1,5 +1,11 @@
-export { ButtonLink } from './buttonLink/buttonLink.component';
-export { CategorySidebar } from './categorySidebar/categorySidebar.component';
-export { Icon } from './icon/icon.component';
-export { ProductItemList } from './productItemList/productItemList.component';
-export { TableData } from './tableData/tableData.component';
+export { AnimatedContent } from './animatedContent/animatedContent.component'
+export { ButtonLink } from './buttonLink/buttonLink.component'
+export { CategorySidebar } from './categorySidebar/categorySidebar.component'
+export { Icon } from './icon/icon.component'
+export { ProductItemList } from './productItemList/productItemList.component'
+export { ProductDataWithImages } from './productDataWithImages/productDataWithImages.component'
+export { RichText } from './richText/richText.component'
+export { TableData } from './tableData/tableData.component'
+export { TextBlock } from './textBlock/textBlock.component'
+export { TripleBoxes } from './tripleBoxes/tripleBoxes.component'
+export { TextWithImage } from './textWithImage/textWithImage.component'

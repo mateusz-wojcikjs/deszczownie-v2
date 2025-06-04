@@ -37,6 +37,20 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
-    // storage-adapter-placeholder
+    // formBuilderPlugin({
+    //   fields: {
+    //     text: true,
+    //     textarea: true,
+    //     select: false,
+    //     email: true,
+    //     state: false,
+    //     country: false,
+    //     checkbox: true,
+    //     number: true,
+    //     message: true,
+    //     date: false,
+    //     payment: false,
+    //   },
+    // }),
   ],
 })

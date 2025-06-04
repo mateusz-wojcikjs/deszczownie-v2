@@ -4,9 +4,15 @@ import { slugField } from '@/fields/slug'
 import { TextBlock } from '@/blocks/TextBlock'
 import { TextWithImage } from '@/blocks/TextWithImage'
 import { OfferSection } from '@/blocks/OfferSection'
+import { ProductDataWithImagesBlock } from '@/blocks/ProductDataWithImages'
+import { TripleBoxes } from '@/blocks/TripleBoxes'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
+  labels: {
+    singular: 'Strona',
+    plural: 'Strony',
+  },
   defaultPopulate: {
     slug: true,
   },
@@ -18,11 +24,20 @@ export const Pages: CollectionConfig = {
     {
       name: 'title',
       type: 'text',
+      label: 'Tytuł',
     },
     {
       name: 'blocks',
       type: 'blocks',
-      blocks: [HeroBlock, TextBlock, TextWithImage, OfferSection],
+      blocks: [
+        HeroBlock,
+        TextBlock,
+        TextWithImage,
+        OfferSection,
+        ProductDataWithImagesBlock,
+        TripleBoxes,
+      ],
+      label: 'Bloki',
     },
     slugField(),
     {
@@ -30,6 +45,7 @@ export const Pages: CollectionConfig = {
       type: 'relationship',
       relationTo: 'pages',
       required: false,
+      label: 'Strona nadrzędna',
     },
   ],
   hooks: {
@@ -39,10 +55,12 @@ export const Pages: CollectionConfig = {
           const parentPage = await req.payload.findByID({
             collection: 'pages',
             id: data.parent,
-          });
-          data.slug = `${parentPage.slug}/${data.slug}`;
+          })
+          if (!data.slug.startsWith(`${parentPage.slug}/`)) {
+            data.slug = `${parentPage.slug}/${data.slug}`
+          }
         }
-        return data;
+        return data
       },
     ],
   },

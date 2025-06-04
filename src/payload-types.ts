@@ -201,6 +201,69 @@ export interface Page {
             blockName?: string | null;
             blockType: 'offerSection';
           }
+        | {
+            title: string;
+            content?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
+            images?:
+              | {
+                  media: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'productDataWithImages';
+          }
+        | {
+            title: {
+              main: string;
+              highlight: string;
+            };
+            images?:
+              | {
+                  media: number | Media;
+                  id?: string | null;
+                }[]
+              | null;
+            features?:
+              | {
+                  title: string;
+                  text: {
+                    root: {
+                      type: string;
+                      children: {
+                        type: string;
+                        version: number;
+                        [k: string]: unknown;
+                      }[];
+                      direction: ('ltr' | 'rtl') | null;
+                      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                      indent: number;
+                      version: number;
+                    };
+                    [k: string]: unknown;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'tripleBoxes';
+          }
       )[]
     | null;
   slug?: string | null;
@@ -550,6 +613,45 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               title?: T;
               categories?: T;
+              id?: T;
+              blockName?: T;
+            };
+        productDataWithImages?:
+          | T
+          | {
+              title?: T;
+              content?: T;
+              images?:
+                | T
+                | {
+                    media?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
+        tripleBoxes?:
+          | T
+          | {
+              title?:
+                | T
+                | {
+                    main?: T;
+                    highlight?: T;
+                  };
+              images?:
+                | T
+                | {
+                    media?: T;
+                    id?: T;
+                  };
+              features?:
+                | T
+                | {
+                    title?: T;
+                    text?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };

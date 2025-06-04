@@ -28,8 +28,11 @@
     "payload": "latest",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "react-photo-view": "^1.2.7",
+    "react-responsive": "^10.0.1",
     "sharp": "0.32.6",
-    "styled-components": "^6.1.15"
+    "styled-components": "^6.1.15",
+    "swiper": "^11.2.8"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",

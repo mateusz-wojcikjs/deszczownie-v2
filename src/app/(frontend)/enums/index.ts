@@ -1,2 +1,3 @@
-export { Route } from './route.enum';
-export * from './components';
+export { Route } from './route.enum'
+export { DynamicContentVariant } from './dynamicContentVariant.enum'
+export * from './components'
