@@ -7,6 +7,7 @@ import {
   CmsTextWithImageBlock,
 } from './blocks'
 import { Media } from '@/payload-types'
+import { PayloadBlock } from '@/app/(frontend)/interfaces'
 
 export type CmsProductBlock =
   | CmsHeroBlock
@@ -21,6 +22,8 @@ export interface CmsProduct {
   slug?: string | null
   image: Media
   category: CmsCategory
-  blocks: CmsProductBlock[] | null
+  blocks: PayloadBlock[] | null
   table: string[][]
+  attachment?: Media
+  images: Media[]
 }

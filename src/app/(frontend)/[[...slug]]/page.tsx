@@ -1,18 +1,22 @@
-import { getPayload } from 'payload'
+import { getPayload, PaginatedDocs, Payload } from 'payload'
 import config from '@payload-config'
 import { notFound } from 'next/navigation'
-import { DynamicContent } from '@/app/(frontend)/components/dynamicContent'
-import { log } from 'console'
+import { DynamicContent } from '@/app/(frontend)/components'
+import { Collection } from '@/enums'
+import { Page as PageType } from '@/payload-types'
+import { Route } from '../enums/route.enum'
+import { PageProps, Params, PayloadBlock } from '../interfaces'
+import { transformPayloadBlock } from '@/utils'
+import { DynamicContentVariant } from '../enums'
 
-export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params
-  const payload = await getPayload({ config })
-  const mergedSlug = slug ? slug.join('/') : 'home'
-  const slugSegments = slug || []
-  const lastSegment = slugSegments[slugSegments.length - 1]
+export default async function Page(props: PageProps) {
+  const { params }: PageProps = props
+  const { slug }: Params = await params
+  const payload: Payload = await getPayload({ config })
+  const mergedSlug: string = slug ? slug.join('/') : Route.Home
 
-  const data = await payload.find({
-    collection: 'pages',
+  const data: PaginatedDocs<PageType> = await payload.find({
+    collection: Collection.Pages,
     where: {
       slug: {
         equals: mergedSlug,
@@ -20,23 +24,17 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
     },
   })
 
-  const page = data.docs?.[0]
+  const pageData: PageType = data.docs?.[0]
 
-  const categoryData = await payload.find({
-    collection: 'categories',
-    where: { slug: { equals: lastSegment } },
-  })
-
-  if (!page) {
+  if (!pageData) {
     return notFound()
   }
-  let productList
-  if (categoryData.docs?.length) {
-    productList = await payload.find({
-      collection: 'products',
-      where: { category: { equals: categoryData.docs[0].id } },
-    })
-  }
 
-  return page.blocks.map((block) => <DynamicContent data={block} key={block.id} />)
+  return pageData.blocks?.map((block: PayloadBlock) => (
+    <DynamicContent
+      data={transformPayloadBlock(block)}
+      key={block.id}
+      variant={DynamicContentVariant.Default}
+    />
+  ))
 }

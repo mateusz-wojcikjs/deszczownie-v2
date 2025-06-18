@@ -1,9 +1,10 @@
 import { TripleBoxesProps } from './tripleBoxes.types'
 import Image from 'next/image'
 import { RichText } from '@/app/(frontend)/components'
+import { FC, JSX } from 'react'
 
-export const TripleBoxes = ({ data }: TripleBoxesProps) => {
-  console.log(data)
+export const TripleBoxes: FC<TripleBoxesProps> = (props: TripleBoxesProps): JSX.Element => {
+  const { data }: TripleBoxesProps = props
 
   return (
     <section className="container py-16">

@@ -1,9 +1,10 @@
-import { CmsTextBlock } from '@/app/(frontend)/interfaces/cms/blocks'
 import { DynamicContentVariant } from '@/app/(frontend)/enums'
+import { PayloadBlock } from '@/app/(frontend)/interfaces'
+
+// Extract the textBlock type from PayloadBlock
+type TextBlockData = Extract<PayloadBlock, { blockType: 'textBlock' }>
 
 export interface TextBlockProps {
-  data: {
-    text: CmsTextBlock
-  }
+  data: TextBlockData
   variant?: DynamicContentVariant
 }

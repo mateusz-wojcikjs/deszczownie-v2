@@ -1,7 +1,7 @@
 import React from 'react'
 import './globals.css'
 import { Footer } from '@/app/(frontend)/components/footer'
-import { Cta } from '@/app/(frontend)/components/cta'
+import { Cta } from '@/app/(frontend)/components'
 import { Navigation } from '@/app/(frontend)/components/navigation'
 import { Poppins } from 'next/font/google'
 
@@ -22,7 +22,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="pl">
       <body className={poppins.className}>
-      <Navigation />
+        <Navigation />
         <main>{children}</main>
         <Cta />
         <Footer />

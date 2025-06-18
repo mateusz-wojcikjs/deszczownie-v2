@@ -1,1 +1,5 @@
-export type { CmsCategory } from './cmsCategory.interface';
+export type { CmsCategory } from './cmsCategory.interface'
+export type { CmsProduct } from './cmsProduct.interface'
+export type { CmsCaseStudy } from './cmsCaseStudy.interface'
+export type { CmsProductBlock } from './cmsProductBlock.interface'
+export * from './blocks'

@@ -40,7 +40,31 @@ export interface ListNode {
   direction?: string
 }
 
-export type RichTextChild = TextNode | LinkNode | ListItemNode | ListNode | LineBreakNode
+export interface UploadNode {
+  type: 'upload'
+  id: string
+  value: {
+    id: number
+    alt: string
+    url: string
+    width: number
+    height: number
+    filename: string
+    mimeType: string
+    filesize: number
+    focalX?: number
+    focalY?: number
+  }
+  relationTo: 'media'
+}
+
+export type RichTextChild =
+  | TextNode
+  | LinkNode
+  | ListItemNode
+  | ListNode
+  | LineBreakNode
+  | UploadNode
 
 export interface RichTextNode {
   type: string
@@ -50,6 +74,7 @@ export interface RichTextNode {
 
 export interface RichTextRendererProps {
   content: RichTextNode[]
+  prose?: boolean
 }
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6

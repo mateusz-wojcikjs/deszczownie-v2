@@ -12,7 +12,7 @@ export function isObject(item: unknown): boolean {
  * @param target
  * @param ...sources
  */
-export default function deepMerge(obj1, obj2) {
+export const deepMerge = (obj1: any, obj2: any) => {
   const output = { ...obj1 }
 
   for (const key in obj2) {

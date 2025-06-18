@@ -1,6 +1,7 @@
 import { Media } from '@/payload-types'
 
 export interface CmsTextWithImageBlock {
+  id: string
   text: {
     root: {
       children: Array<{

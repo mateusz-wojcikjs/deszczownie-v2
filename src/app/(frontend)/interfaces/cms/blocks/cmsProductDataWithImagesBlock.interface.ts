@@ -1,11 +1,24 @@
 import { Media } from '@/payload-types'
-import { CmsTextBlock } from './cmsTextBlock.interface'
 
 export interface CmsProductDataWithImagesBlock {
+  id: number
   title: string
-  content: CmsTextBlock
+  content: {
+    root: {
+      children: Array<{
+        type: string
+        version: number
+        [k: string]: unknown
+      }>
+      direction: ('ltr' | 'rtl') | null
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | ''
+      indent: number
+      version: number
+    }
+    [k: string]: unknown
+  }
   images: {
     media: Media
-    id?: string | null
+    id?: string
   }[]
 }

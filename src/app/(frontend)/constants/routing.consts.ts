@@ -1,5 +1,6 @@
 import { Route } from '@/app/(frontend)/enums'
 
 export const Routing = [
-  { path: 'oferta', name: Route.Offers }
-];
+  { path: 'oferta', name: Route.Offers },
+  { path: 'nasze-realizacje', name: Route.CaseStudies },
+]

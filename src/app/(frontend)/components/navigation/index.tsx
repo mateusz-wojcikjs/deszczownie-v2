@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { LinkBuilder } from '../../../../utils/linkBuilder/linkBuilder.util'
 
 export const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -47,37 +48,37 @@ export const Navigation = () => {
               }`}
             >
               <li>
-                <a href="/kim-jestesmy/">Kim jesteśmy</a>
+                <Link href="/kim-jestesmy/">Kim jesteśmy</Link>
               </li>
               <li className="mobile-submenu level-menu">
-                <a href="https://deszczownie.pl/oferta/deszczownie-szpulowe/">
+                <Link href={LinkBuilder.offers.category('deszczownie-szpulowe')}>
                   Deszczownie szpulowe
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="https://deszczownie.pl/oferta/deszczownie-mostowe/">Deszczownie mostowe</a>
+                <a href={LinkBuilder.offers.category('deszczownie-mostowe')}>Deszczownie mostowe</a>
               </li>
               <li>
-                <a href="https://deszczownie.pl/nasze-realizacje/">Nasze realizacje</a>
+                <Link href={LinkBuilder.caseStudies.base()}>Nasze realizacje</Link>
               </li>
               <li>
-                <a className="lg:hidden" href="/kontakt">
+                <Link className="lg:hidden" href="/kontakt">
                   Kontakt
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           {/* Contact Button */}
           <div className="hidden lg:flex gap-x-8 items-center">
-            <a
+            <Link
               className={`button button--primary text-base transition-colors duration-300 ${
                 isScrolled ? 'text-black border-black' : 'text-white border-white'
               }`}
               href="/kontakt"
             >
               Kontakt
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -3,7 +3,9 @@
 import { LazyMotion, domAnimation, m } from 'framer-motion'
 import { AnimatedContentProps } from './animatedContent.types'
 
-export const AnimatedContent = ({ children }: AnimatedContentProps) => {
+export const AnimatedContent = (props: AnimatedContentProps) => {
+  const { children }: AnimatedContentProps = props
+
   return (
     <LazyMotion features={domAnimation}>
       <m.div

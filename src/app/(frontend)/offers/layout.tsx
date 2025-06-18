@@ -1,9 +1,3 @@
-export default async function ProductsLayout({
-  children,
-  params,
-}: {
-  children: React.ReactNode
-  params: Promise<{ slug: string[] }>
-}) {
+export default async function ProductsLayout({ children }: { children: React.ReactNode }) {
   return children
 }

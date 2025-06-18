@@ -1,8 +1,7 @@
 import type { LinkAppearances } from './link'
 import link from './link'
 import { ArrayField, Field } from 'payload'
-import { deepMergeSimple } from '@payloadcms/ui/utilities/deepMerge'
-import deepMerge from '@/utils/deepMerge'
+import { deepMerge } from '@/utils'
 
 export type LinkGroupType = (options?: {
   overrides?: Partial<ArrayField>

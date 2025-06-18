@@ -1,2 +1,6 @@
-export { ArrowRight } from './arrowRight';
-export { Download } from './download';
+export { Address } from './address'
+export { ArrowRight } from './arrowRight'
+export { Checkmark } from './checkmark'
+export { Download } from './download'
+export { Email } from './email'
+export { Phone } from './phone'

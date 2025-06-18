@@ -5,15 +5,16 @@ import clsx from 'clsx'
 import { DynamicContentVariant } from '@/app/(frontend)/enums'
 import { TextWithImageProps } from './textWithImage.types'
 import { TextWithImageAnimated } from './textWithImage.animated'
+import { TextBlock, ImageBlock } from '@/types/textWithImageSection.interface'
 
 export const TextWithImage = (props: TextWithImageProps) => {
-  const { data, variant = DynamicContentVariant.DEFAULT } = props
+  const { data, variant = DynamicContentVariant.Default }: TextWithImageProps = props
 
   return (
     <div className={clsx(variantClasses[variant])}>
       <TextWithImageAnimated>
         <div className="flex flex-col lg:flex-row items-center gap-16">
-          {data.textAndImage.map((block) => {
+          {data.textAndImage.map((block: TextBlock | ImageBlock) => {
             if (block.blockType === 'text') {
               return (
                 <div key={block.id} className="basis-1/2">

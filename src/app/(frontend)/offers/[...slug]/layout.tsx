@@ -1,14 +1,21 @@
-import { PhotoProviderWrapper } from './PhotoProviderWrapper'
+import { PhotoProviderWrapper } from '../../providers/PhotoProviderWrapper'
+import { Route } from '../../enums/route.enum'
+import { getRoutePath } from '../../constants/routing.const'
+import { Params } from '../../interfaces'
 
 export default async function ProductsLayout({
   children,
   params,
 }: {
   children: React.ReactNode
-  params: Promise<{ slug: string[] }>
+  params: Promise<Params>
 }) {
   const resolvedParams = await params
-  const pathname = resolvedParams.slug ? `/offers/${resolvedParams.slug.join('/')}` : '/offers'
+  const pathname = getRoutePath(Route.Offers, resolvedParams.slug)
 
-  return <PhotoProviderWrapper pathname={pathname}>{children}</PhotoProviderWrapper>
+  return (
+    <PhotoProviderWrapper shouldRender={pathname.split('/').length === 3}>
+      {children}
+    </PhotoProviderWrapper>
+  )
 }

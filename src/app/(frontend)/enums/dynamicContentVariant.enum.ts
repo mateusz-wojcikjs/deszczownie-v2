@@ -1,4 +1,4 @@
 export enum DynamicContentVariant {
-  DEFAULT = 'default',
-  OFFER = 'offer',
+  Default = 'default',
+  Offer = 'offer',
 }

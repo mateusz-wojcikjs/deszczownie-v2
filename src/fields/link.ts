@@ -1,6 +1,5 @@
 import { Field } from 'payload'
-import { deepMergeSimple } from '@payloadcms/ui/utilities/deepMerge'
-import deepMerge from '@/utils/deepMerge'
+import { deepMerge } from '@/utils'
 
 export const appearanceOptions = {
   primary: {
@@ -106,7 +105,7 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
   ]
 
   if (!disableLabel) {
-    linkTypes.map(linkType => ({
+    linkTypes.map((linkType) => ({
       ...linkType,
       admin: {
         ...linkType.admin,
@@ -141,7 +140,7 @@ const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = 
     ]
 
     if (appearances) {
-      appearanceOptionsToUse = appearances.map(appearance => appearanceOptions[appearance])
+      appearanceOptionsToUse = appearances.map((appearance) => appearanceOptions[appearance])
     }
 
     linkResult.fields.push({

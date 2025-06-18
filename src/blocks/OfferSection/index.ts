@@ -1,4 +1,4 @@
-import type { Block } from 'payload/types'
+import type { Block } from 'payload'
 
 export const OfferSection: Block = {
   slug: 'offerSection',
@@ -18,6 +18,13 @@ export const OfferSection: Block = {
       name: 'categories',
       label: 'Wybrane kategorie',
       relationTo: 'categories',
+      hasMany: true,
+    },
+    {
+      type: 'relationship',
+      name: 'caseStudies',
+      label: 'Wybrane realizacje',
+      relationTo: 'case-studies',
       hasMany: true,
     },
   ],

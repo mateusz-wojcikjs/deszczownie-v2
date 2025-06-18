@@ -1,4 +1,4 @@
-import { Media } from './Media'
+import { Media } from './media.interface'
 import { CmsTextWithImageBlock } from '@/app/(frontend)/interfaces/cms/blocks'
 
 export interface TextBlock extends CmsTextWithImageBlock {
@@ -15,7 +15,7 @@ export interface ImageBlock {
 }
 
 export type TextWithImageBlock = {
-  textAndImage: [TextBlock, ImageBlock]
+  textAndImage: TextBlock | ImageBlock
 }
 
 export type TextWithImageSection = {

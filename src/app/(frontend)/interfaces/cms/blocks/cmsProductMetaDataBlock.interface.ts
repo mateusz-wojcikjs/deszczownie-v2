@@ -1,3 +1,4 @@
 export interface CmsProductMetaDataBlock {
-  data: any;
+  id: string
+  data: any
 }
