@@ -19,13 +19,7 @@ export const OfferSection: Block = {
       label: 'Wybrane kategorie',
       relationTo: 'categories',
       hasMany: true,
-    },
-    {
-      type: 'relationship',
-      name: 'caseStudies',
-      label: 'Wybrane realizacje',
-      relationTo: 'case-studies',
-      hasMany: true,
+      required: true,
     },
   ],
 }

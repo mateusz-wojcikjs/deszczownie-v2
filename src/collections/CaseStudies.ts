@@ -10,6 +10,9 @@ export const CaseStudies: CollectionConfig = {
   },
   defaultPopulate: {
     slug: true,
+    image: true,
+    date: true,
+    title: true,
   },
   admin: {
     useAsTitle: 'title',

@@ -4,10 +4,10 @@ import { notFound } from 'next/navigation'
 import { DynamicContent } from '@/app/(frontend)/components'
 import { Collection } from '@/enums'
 import { Page as PageType } from '@/payload-types'
-import { Route } from '../enums/route.enum'
-import { PageProps, Params, PayloadBlock } from '../interfaces'
+import { Route } from '../../enums/route.enum'
+import { PageProps, Params, PayloadBlock } from '../../interfaces'
 import { transformPayloadBlock } from '@/utils'
-import { DynamicContentVariant } from '../enums'
+import { DynamicContentVariant } from '../../enums'
 
 export default async function Page(props: PageProps) {
   const { params }: PageProps = props

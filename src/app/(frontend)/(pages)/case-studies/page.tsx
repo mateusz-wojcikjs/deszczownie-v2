@@ -2,14 +2,14 @@ import { getPayload, PaginatedDocs } from 'payload'
 import { DynamicContent } from '@/app/(frontend)/components'
 import config from '@payload-config'
 import { notFound } from 'next/navigation'
-import { DynamicContentVariant, Routing } from '../enums'
+import { DynamicContentVariant, Routing } from '../../enums'
 import Link from 'next/link'
 import Image from 'next/image'
 import { CaseStudy, Page } from '@/payload-types'
 import { Collection } from '@/enums'
-import { LinkBuilder, transformToCmsCaseStudy, transformPayloadBlock } from '../../../utils'
-import { PayloadBlock } from '../interfaces'
-import { CmsCaseStudy } from '../interfaces/cms'
+import { LinkBuilder, transformToCmsCaseStudy, transformPayloadBlock } from '../../../../utils'
+import { PayloadBlock } from '../../interfaces'
+import { CmsCaseStudy } from '../../interfaces/cms'
 
 export default async function CaseStudiesPage() {
   const payload = await getPayload({ config })

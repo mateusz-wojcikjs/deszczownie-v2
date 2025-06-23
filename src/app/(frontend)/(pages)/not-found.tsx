@@ -1,13 +1,14 @@
 import Link from 'next/link'
-import { ButtonLink } from './(frontend)/components'
+import { ButtonLink } from '../components'
+import { Routing } from '../enums/routing.enum'
 
-export default function Custom404() {
+export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-green-100">
       <div className="text-center px-6 py-12">
         {/* 404 Number */}
         <div className="mb-8">
-          <h1 className="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 animate-pulse">
+          <h1 className="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-green-600 animate-pulse">
             404
           </h1>
         </div>
@@ -73,7 +74,7 @@ export default function Custom404() {
               Kontakt
             </Link>
             <Link
-              href="/case-studies"
+              href={Routing.CaseStudies}
               className="text-blue-600 hover:text-blue-800 transition-colors duration-200"
             >
               Realizacje

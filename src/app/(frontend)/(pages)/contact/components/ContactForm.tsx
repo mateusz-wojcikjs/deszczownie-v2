@@ -2,8 +2,8 @@
 
 import { Form } from '@/payload-types'
 import { useState } from 'react'
-import { Icon } from '../../components/icon/icon.component'
-import { IconName } from '../../enums'
+import { Icon } from '@/app/(frontend)/components'
+import { IconName } from '../../../enums'
 
 interface ContactFormProps {
   form: Form

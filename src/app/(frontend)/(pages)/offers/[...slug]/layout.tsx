@@ -1,7 +1,7 @@
-import { PhotoProviderWrapper } from '../../providers/PhotoProviderWrapper'
-import { Route } from '../../enums/route.enum'
-import { getRoutePath } from '../../constants/routing.const'
-import { Params } from '../../interfaces'
+import { PhotoProviderWrapper } from '../../../providers/PhotoProviderWrapper'
+import { Route } from '../../../enums/route.enum'
+import { getRoutePath } from '../../../constants/routing.const'
+import { Params } from '../../../interfaces'
 
 export default async function ProductsLayout({
   children,

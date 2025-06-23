@@ -3,9 +3,9 @@ import { Form, Page } from '@/payload-types'
 import { ContactForm } from './components/ContactForm'
 import configPromise from '@payload-config'
 import { DynamicContent, Icon } from '@/app/(frontend)/components'
-import { IconName } from '../enums'
+import { IconName } from '../../enums'
 import { Collection } from '@/enums'
-import { Routing } from '../enums/routing.enum'
+import { Routing } from '../../enums/routing.enum'
 
 export default async function ContactPage() {
   const payload = await getPayload({

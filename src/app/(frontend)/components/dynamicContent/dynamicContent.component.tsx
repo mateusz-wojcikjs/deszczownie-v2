@@ -9,6 +9,7 @@ import {
   ImageBlock,
   Hero,
   OffersBlock,
+  CaseStudiesSection,
   ProductDataWithImages,
 } from '@/app/(frontend)/components'
 
@@ -34,10 +35,11 @@ export const DynamicContent = ({
       return <TextWithImage data={data} variant={variant} />
     case 'offerSection':
       return <OffersBlock data={data} />
+    case 'caseStudiesSection':
+      return <CaseStudiesSection data={data} />
     case 'textBlock':
       return <TextBlock data={data} variant={variant} />
     case 'imageBlock':
-      // TODO: Remove id from data
       return <ImageBlock {...data} />
     case 'text':
       return <RichText content={data.text.root.children} />

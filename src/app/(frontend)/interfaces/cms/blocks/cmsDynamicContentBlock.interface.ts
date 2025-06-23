@@ -6,6 +6,7 @@ import {
   CmsTripleBoxesBlock,
   CmsProductDataWithImagesBlock,
   CmsOfferSectionBlock,
+  CmsCaseStudiesSectionBlock,
   CmsTextBlockData,
 } from './index'
 
@@ -17,4 +18,5 @@ export type CmsDynamicContentBlock =
   | (CmsTripleBoxesBlock & { blockType: 'tripleBoxes' })
   | (CmsProductDataWithImagesBlock & { blockType: 'productDataWithImages' })
   | (CmsOfferSectionBlock & { blockType: 'offerSection' })
+  | (CmsCaseStudiesSectionBlock & { blockType: 'caseStudiesSection' })
   | (CmsTextBlockData & { blockType: 'text' })

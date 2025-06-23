@@ -4,6 +4,7 @@ import { slugField } from '@/fields/slug'
 import { TextBlock } from '@/blocks/TextBlock'
 import { TextWithImage } from '@/blocks/TextWithImage'
 import { OfferSection } from '@/blocks/OfferSection'
+import { CaseStudiesSection } from '@/blocks/CaseStudiesSection'
 import { ProductDataWithImagesBlock } from '@/blocks/ProductDataWithImages'
 import { TripleBoxes } from '@/blocks/TripleBoxes'
 
@@ -34,6 +35,7 @@ export const Pages: CollectionConfig = {
         TextBlock,
         TextWithImage,
         OfferSection,
+        CaseStudiesSection,
         ProductDataWithImagesBlock,
         TripleBoxes,
       ],

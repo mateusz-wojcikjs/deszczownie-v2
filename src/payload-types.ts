@@ -258,11 +258,17 @@ export interface Page {
           }
         | {
             title?: string | null;
-            categories?: (number | Category)[] | null;
-            caseStudies?: (number | CaseStudy)[] | null;
+            categories: (number | Category)[];
             id?: string | null;
             blockName?: string | null;
             blockType: 'offerSection';
+          }
+        | {
+            title?: string | null;
+            caseStudies: (number | CaseStudy)[];
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'caseStudiesSection';
           }
         | {
             title: string;
@@ -878,6 +884,13 @@ export interface PagesSelect<T extends boolean = true> {
           | {
               title?: T;
               categories?: T;
+              id?: T;
+              blockName?: T;
+            };
+        caseStudiesSection?:
+          | T
+          | {
+              title?: T;
               caseStudies?: T;
               id?: T;
               blockName?: T;

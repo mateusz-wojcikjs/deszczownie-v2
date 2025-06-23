@@ -1,10 +1,10 @@
 import { getPayload, PaginatedDocs, Payload } from 'payload'
 import config from '@payload-config'
 import { notFound } from 'next/navigation'
-import { ButtonLink, GallerySlider, RichText } from '../../components'
+import { ButtonLink, GallerySlider, RichText } from '../../../components'
 import { Collection } from '@/enums'
-import { CmsCaseStudy } from '../../interfaces/cms'
-import { Params, PageProps } from '../../interfaces'
+import { CmsCaseStudy } from '../../../interfaces/cms'
+import { Params, PageProps } from '../../../interfaces'
 import { CaseStudy } from '@/payload-types'
 import { transformToCmsCaseStudy, LinkBuilder } from '@/utils'
 
