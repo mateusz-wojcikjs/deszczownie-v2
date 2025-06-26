@@ -258,13 +258,50 @@ export interface Page {
           }
         | {
             title?: string | null;
+            description?: {
+              root: {
+                type: string;
+                children: {
+                  type: string;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            } | null;
             categories: (number | Category)[];
+            type?: ('highImpact' | 'mediumImpact') | null;
+            links?:
+              | {
+                  link: {
+                    type?: ('reference' | 'custom') | null;
+                    icon?: boolean | null;
+                    newTab?: boolean | null;
+                    reference?: {
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null;
+                    url?: string | null;
+                    label: string;
+                    /**
+                     * Wybierz wygląd linka.
+                     */
+                    appearance?: ('default' | 'primary' | 'secondary') | null;
+                  };
+                  id?: string | null;
+                }[]
+              | null;
             id?: string | null;
             blockName?: string | null;
             blockType: 'offerSection';
           }
         | {
             title?: string | null;
+            description?: string | null;
             caseStudies: (number | CaseStudy)[];
             id?: string | null;
             blockName?: string | null;
@@ -883,7 +920,25 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              description?: T;
               categories?: T;
+              type?: T;
+              links?:
+                | T
+                | {
+                    link?:
+                      | T
+                      | {
+                          type?: T;
+                          icon?: T;
+                          newTab?: T;
+                          reference?: T;
+                          url?: T;
+                          label?: T;
+                          appearance?: T;
+                        };
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };
@@ -891,6 +946,7 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               title?: T;
+              description?: T;
               caseStudies?: T;
               id?: T;
               blockName?: T;

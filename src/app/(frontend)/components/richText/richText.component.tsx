@@ -147,7 +147,12 @@ export const RichText: React.FC<RichTextRendererProps> = (props: RichTextRendere
           }
 
           case 'paragraph': {
-            const textAlignClass = node.format === 'justify' ? 'text-justify' : 'text-left'
+            const textAlignClass =
+              node.format === 'justify'
+                ? 'text-justify'
+                : node.format === 'center'
+                  ? 'text-center'
+                  : 'text-left'
             const proseClass = prose ? 'prose-p' : ''
 
             if (node.children?.length === 1 && node.children[0].type === 'link') {

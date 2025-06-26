@@ -14,6 +14,11 @@ export const CaseStudiesSection: Block = {
       defaultValue: 'Nasze Realizacje',
     },
     {
+      type: 'text',
+      name: 'description',
+      label: 'Opis',
+    },
+    {
       type: 'relationship',
       name: 'caseStudies',
       label: 'Wybrane realizacje',

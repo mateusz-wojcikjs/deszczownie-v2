@@ -1,3 +1,4 @@
-export { ButtonTheme } from './buttonTheme.enum';
-export { ButtonSize } from './buttonSize.enum';
-export { IconName } from './iconName.enum';
+export { ButtonTheme } from './buttonTheme.enum'
+export { ButtonSize } from './buttonSize.enum'
+export { IconName } from './iconName.enum'
+export { IconColor } from './iconColor.enum'

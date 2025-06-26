@@ -13,7 +13,7 @@ export const CaseStudiesSection: FC<CaseStudiesSectionProps> = (
 
   return (
     <div className="container py-24">
-      <h2 className="text-4xl text-center text-secondary mb-16">{title}</h2>
+      <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 text-center">{title}</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {caseStudies.map((caseStudy: CaseStudy) => {
           const image = caseStudy.image as Media

@@ -1,4 +1,5 @@
 export { Route } from './route.enum'
 export { Routing } from './routing.enum'
 export { DynamicContentVariant } from './dynamicContentVariant.enum'
+export { FilesPaths } from './filesPaths.enum'
 export * from './components'
