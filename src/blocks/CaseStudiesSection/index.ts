@@ -1,3 +1,5 @@
+import linkGroup from '@/fields/linkGroup'
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import type { Block } from 'payload'
 
 export const CaseStudiesSection: Block = {
@@ -14,9 +16,10 @@ export const CaseStudiesSection: Block = {
       defaultValue: 'Nasze Realizacje',
     },
     {
-      type: 'text',
-      name: 'description',
+      name: 'content',
       label: 'Opis',
+      type: 'richText',
+      editor: lexicalEditor({}),
     },
     {
       type: 'relationship',
@@ -26,5 +29,29 @@ export const CaseStudiesSection: Block = {
       hasMany: true,
       required: true,
     },
+    // {
+    //   name: 'type',
+    //   defaultValue: 'mediumImpact',
+    //   label: 'Wariant',
+    //   options: [
+    //     {
+    //       label: 'Wariant z tłem i odnośnikiem do kategorii',
+    //       value: 'highImpact',
+    //     },
+    //     {
+    //       label: 'Wariant kompaktowy',
+    //       value: 'mediumImpact',
+    //     },
+    //   ],
+    //   type: 'select',
+    // },
+    // linkGroup({
+    //   overrides: {
+    //     maxRows: 1,
+    //     admin: {
+    //       condition: (_, { type } = {}) => ['highImpact'].includes(type),
+    //     },
+    //   },
+    // }),
   ],
 }

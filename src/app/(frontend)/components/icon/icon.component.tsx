@@ -9,6 +9,12 @@ import {
   IrrigationFeature3,
   IrrigationFeature4,
   IrrigationFeature2,
+  Durability,
+  DeliveryAndService,
+  Efficiency,
+  Support,
+  Partnership,
+  Offers,
 } from './icons'
 import { IconName } from '@/app/(frontend)/enums'
 import { IconProps } from './icon.types'
@@ -24,8 +30,14 @@ export const Icon: (props: IconProps) => JSX.Element | null = (
       return <ArrowRight size={size} color={color} className={className} />
     case IconName.Checkmark:
       return <Checkmark size={size} color={color} className={className} />
+    case IconName.DeliveryAndService:
+      return <DeliveryAndService size={size} color={color} className={className} />
+    case IconName.Efficiency:
+      return <Efficiency size={size} color={color} className={className} />
     case IconName.Download:
       return <Download size={size} color={color} className={className} />
+    case IconName.Durability:
+      return <Durability size={size} color={color} className={className} />
     case IconName.Phone:
       return <Phone size={size} color={color} className={className} />
     case IconName.Address:
@@ -40,6 +52,12 @@ export const Icon: (props: IconProps) => JSX.Element | null = (
       return <IrrigationFeature3 size={size} color={color} className={className} />
     case IconName.IrrigationFeature4:
       return <IrrigationFeature4 size={size} color={color} className={className} />
+    case IconName.Offers:
+      return <Offers size={size} color={color} className={className} />
+    case IconName.Support:
+      return <Support size={size} color={color} className={className} />
+    case IconName.Partnership:
+      return <Partnership size={size} color={color} className={className} />
     default:
       return null
   }

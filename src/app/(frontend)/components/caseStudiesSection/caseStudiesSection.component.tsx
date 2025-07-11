@@ -4,17 +4,28 @@ import Image from 'next/image'
 import { CaseStudy, Media } from '@/payload-types'
 import { CaseStudiesSectionData, CaseStudiesSectionProps } from './caseStudiesSection.types'
 import { LinkBuilder } from '@/utils'
+import { RichText } from '../richText/richText.component'
+import { ButtonLink } from '../buttonLink/buttonLink.component'
+import { ButtonTheme, Route } from '../../enums'
 
 export const CaseStudiesSection: FC<CaseStudiesSectionProps> = (
   props: CaseStudiesSectionProps,
 ): JSX.Element => {
   const { data }: CaseStudiesSectionProps = props
-  const { caseStudies, title }: CaseStudiesSectionData = data
+  const { caseStudies, title, content }: CaseStudiesSectionData = data
 
   return (
     <div className="container py-24">
       <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 text-center">{title}</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {content && (
+        <>
+          <div className="w-24 h-1 bg-slate-800 mx-auto mb-8 rounded-full"></div>
+          <div className="prose prose-slate mx-auto mt-8 max-w-3xl text-center">
+            <RichText content={content.root.children} />
+          </div>
+        </>
+      )}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-12">
         {caseStudies.map((caseStudy: CaseStudy) => {
           const image = caseStudy.image as Media
           return (
@@ -49,6 +60,11 @@ export const CaseStudiesSection: FC<CaseStudiesSectionProps> = (
             </Link>
           )
         })}
+      </div>
+      <div className="pt-12 flex justify-center">
+        <ButtonLink href={Route.CaseStudies} theme={ButtonTheme.Primary}>
+          Zobacz wszystkie realizacje
+        </ButtonLink>
       </div>
     </div>
   )

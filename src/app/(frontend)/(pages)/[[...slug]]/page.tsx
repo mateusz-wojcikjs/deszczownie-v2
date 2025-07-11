@@ -164,7 +164,7 @@ export default async function Page(props: PageProps) {
             <div className="group bg-gray-50 rounded-2xl p-8 hover:bg-emerald-50 transition-all duration-300 hover:shadow-lg">
               <div className="flex items-start mb-4">
                 <div className="w-16 h-16 bg-emerald-500 rounded-xl flex items-center justify-center mr-4 group-hover:bg-emerald-600 transition-colors flex-shrink-0">
-                  <span className="text-white text-2xl font-bold">✓</span>
+                  <Icon iconName={IconName.Offers} color={IconColor.White} size={48} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">Kompleksowa oferta</h3>
               </div>
@@ -177,7 +177,7 @@ export default async function Page(props: PageProps) {
             <div className="group bg-gray-50 rounded-2xl p-8 hover:bg-emerald-50 transition-all duration-300 hover:shadow-lg">
               <div className="flex items-start mb-4">
                 <div className="w-16 h-16 bg-emerald-500 rounded-xl flex items-center justify-center mr-4 group-hover:bg-emerald-600 transition-colors flex-shrink-0">
-                  <span className="text-white text-2xl font-bold">✓</span>
+                  <Icon iconName={IconName.Durability} color={IconColor.White} size={48} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">Wytrzymałość na lata</h3>
               </div>
@@ -190,7 +190,7 @@ export default async function Page(props: PageProps) {
             <div className="group bg-gray-50 rounded-2xl p-8 hover:bg-emerald-50 transition-all duration-300 hover:shadow-lg">
               <div className="flex items-start mb-4">
                 <div className="w-16 h-16 bg-emerald-500 rounded-xl flex items-center justify-center mr-4 group-hover:bg-emerald-600 transition-colors flex-shrink-0">
-                  <span className="text-white text-2xl font-bold">✓</span>
+                  <Icon iconName={IconName.Efficiency} color={IconColor.White} size={48} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">
                   Skuteczne i oszczędne nawadnianie
@@ -205,7 +205,7 @@ export default async function Page(props: PageProps) {
             <div className="group bg-gray-50 rounded-2xl p-8 hover:bg-emerald-50 transition-all duration-300 hover:shadow-lg">
               <div className="flex items-start mb-4">
                 <div className="w-16 h-16 bg-emerald-500 rounded-xl flex items-center justify-center mr-4 group-hover:bg-emerald-600 transition-colors flex-shrink-0">
-                  <span className="text-white text-2xl font-bold">✓</span>
+                  <Icon iconName={IconName.Support} color={IconColor.White} size={48} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">Doradztwo techniczne</h3>
               </div>
@@ -218,7 +218,7 @@ export default async function Page(props: PageProps) {
             <div className="group bg-gray-50 rounded-2xl p-8 hover:bg-emerald-50 transition-all duration-300 hover:shadow-lg md:col-span-2 lg:col-span-1">
               <div className="flex items-start mb-4">
                 <div className="w-16 h-16 bg-emerald-500 rounded-xl flex items-center justify-center mr-4 group-hover:bg-emerald-600 transition-colors flex-shrink-0">
-                  <span className="text-white text-2xl font-bold">✓</span>
+                  <Icon iconName={IconName.DeliveryAndService} color={IconColor.White} size={48} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">Szybka dostawa i serwis</h3>
               </div>
@@ -230,7 +230,7 @@ export default async function Page(props: PageProps) {
             <div className="group bg-gray-50 rounded-2xl p-8 hover:bg-emerald-50 transition-all duration-300 hover:shadow-lg md:col-span-2 lg:col-span-1">
               <div className="flex items-start mb-4">
                 <div className="w-16 h-16 bg-emerald-500 rounded-xl flex items-center justify-center mr-4 group-hover:bg-emerald-600 transition-colors flex-shrink-0">
-                  <span className="text-white text-2xl font-bold">✓</span>
+                  <Icon iconName={IconName.Partnership} color={IconColor.White} size={48} />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900">
                   Partnerskie podejście do rolnika

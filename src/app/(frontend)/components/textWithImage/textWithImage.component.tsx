@@ -2,23 +2,16 @@ import Image from 'next/image'
 import { RichText } from '@/app/(frontend)/components'
 import { variantClasses } from './textWithImage.consts'
 import clsx from 'clsx'
-import { DynamicContentVariant, FilesPaths } from '@/app/(frontend)/enums'
+import { DynamicContentVariant } from '@/app/(frontend)/enums'
 import { TextWithImageProps } from './textWithImage.types'
 import { TextWithImageAnimated } from './textWithImage.animated'
+import { ParallaxBackground } from './parallaxBackground.component'
 
 export const TextWithImage = (props: TextWithImageProps) => {
   const { data, variant = DynamicContentVariant.Default }: TextWithImageProps = props
 
   return (
     <div className="relative">
-      <div className="absolute top-0 left-0 w-full h-full">
-        <Image
-          src={FilesPaths.LineDrawingDecoration}
-          alt=""
-          fill
-          className="opacity-10 object-cover"
-        />
-      </div>
       <div className={clsx(variantClasses[variant])}>
         <TextWithImageAnimated>
           <div className="flex flex-col lg:flex-row items-center gap-16 relative z-10">

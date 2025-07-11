@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { FC, JSX } from 'react'
 import { HeroProps } from './hero.types'
 import { HeroAnimations } from './heroAnimations.component'
+import { ParallaxBackground } from '../textWithImage/parallaxBackground.component'
 
 export const Hero: FC<HeroProps> = (props: HeroProps): JSX.Element => {
   const { title, description, media, type }: HeroProps = props
@@ -9,7 +10,7 @@ export const Hero: FC<HeroProps> = (props: HeroProps): JSX.Element => {
   if (type === 'highImpact') {
     return (
       <section
-        className="relative min-h-[80vh] flex lg:items-center before:absolute before:inset-0 before:z-10 before:block before:bg-linear-65 before:from-slate-800/80 before:to-secondary-500/80 overflow-hidden"
+        className="relative min-h-[80vh] flex lg:items-center before:absolute before:inset-0 before:z-10 before:block before:bg-linear-65 before:from-slate-800/80 before:to-secondary-500/80"
         aria-labelledby="hero-title"
         role="banner"
       >
@@ -40,6 +41,7 @@ export const Hero: FC<HeroProps> = (props: HeroProps): JSX.Element => {
           )}
         </div>
         <HeroAnimations {...props} />
+        <ParallaxBackground />
       </section>
     )
   } else {
