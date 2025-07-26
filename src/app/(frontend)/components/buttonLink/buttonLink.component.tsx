@@ -26,7 +26,10 @@ export const ButtonLink: (props: ButtonLinkProps) => JSX.Element = (
   )
 
   const sharedClasses: string = clsx(
-    'transition-colors inline-flex items-center gap-x-3 uppercase rounded border-2 justify-center flex-nowrap',
+    'relative overflow-hidden inline-flex items-center gap-x-3 uppercase rounded border-2 justify-center flex-nowrap',
+    'transition-all duration-500 ease-out transform active:scale-95',
+    'shadow-md hover:shadow-lg',
+    'hover:brightness-110 hover:contrast-125 btn-fancy',
     variantClasses[theme],
     sizeClasses[size],
     className,

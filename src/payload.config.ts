@@ -14,6 +14,7 @@ import { Pages } from './collections/Pages'
 import { Products } from '@/collections/Product'
 import { Categories } from '@/collections/Categories'
 import { CaseStudies } from '@/collections/CaseStudies'
+import { GlobalSettings } from './collections/GlobalSettings'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -26,6 +27,7 @@ export default buildConfig({
     },
   },
   collections: [Users, Media, Pages, Products, Categories, CaseStudies],
+  globals: [GlobalSettings],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {

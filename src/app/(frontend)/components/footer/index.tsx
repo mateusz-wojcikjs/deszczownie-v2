@@ -1,7 +1,27 @@
 import Link from 'next/link'
 import { FC, JSX } from 'react'
+import { GlobalSetting } from '@/payload-types'
 
-export const Footer: FC = (): JSX.Element => {
+interface FooterProps {
+  globalSettings?: GlobalSetting | null
+}
+
+export const Footer: FC<FooterProps> = ({ globalSettings }): JSX.Element => {
+  // Default values if global settings are not available
+  const companyName = globalSettings?.contact?.companyName || 'KMK Agro Sp. J.'
+  const address = globalSettings?.contact?.address || 'ul. Poznańska 20, Brodowo 63-000 Środa Wlkp.'
+  const nip = globalSettings?.contact?.nip || '786-15-72-061'
+  const phone = globalSettings?.contact?.phone || '605 331 418'
+  const email = globalSettings?.contact?.email || 'kontakt@kmkagro.com'
+  const facebookUrl = globalSettings?.socialMedia?.facebook || 'https://www.facebook.com/KMKAgro2'
+  const instagramUrl = globalSettings?.socialMedia?.instagram || 'https://www.instagram.com/kmkagro'
+  const logoUrl =
+    globalSettings?.footer?.logoUrl || 'https://deszczownie.pl/wp-content/uploads/2024/04/logo.png'
+  const copyrightText =
+    globalSettings?.footer?.copyrightText ||
+    'COPYRIGHT © {year} KMK Agro Deszczownie. All Rights Reserved.'
+  const privacyPolicyUrl = globalSettings?.footer?.privacyPolicyUrl || '/polityka-prywatnosci'
+
   return (
     <footer className="bg-linear-to-bl from-gray-50 to-slate-50">
       <div className="container text-sm">
@@ -18,7 +38,7 @@ export const Footer: FC = (): JSX.Element => {
                 <img
                   width="1871"
                   height="252"
-                  src="https://deszczownie.pl/wp-content/uploads/2024/04/logo.png"
+                  src={logoUrl}
                   className="custom-logo"
                   alt="Deszczownie"
                   decoding="async"
@@ -27,9 +47,9 @@ export const Footer: FC = (): JSX.Element => {
             </div>
 
             <div className="mb-6">
-              <h5 className="text-xl font-semibold text-secondary-500 mb-2">KMK Agro Sp. J. </h5>
-              <p className="text-secondary-500">ul. Poznańska 20, Brodowo 63-000 Środa Wlkp. </p>
-              <p className="text-secondary-500">NIP 786-15-72-061 </p>
+              <h5 className="text-xl font-semibold text-secondary-500 mb-2">{companyName}</h5>
+              <p className="text-secondary-500">{address}</p>
+              <p className="text-secondary-500">NIP {nip}</p>
             </div>
 
             <div className="mb-6">
@@ -38,17 +58,17 @@ export const Footer: FC = (): JSX.Element => {
                 <li>
                   <Link
                     className="text-secondary-500 transition-colors hover:text-primary-500"
-                    href="tel:605331418"
+                    href={`tel:${phone.replace(/\s/g, '')}`}
                   >
-                    605 331 418{' '}
+                    {phone}{' '}
                   </Link>
                 </li>
                 <li>
                   <Link
                     className="text-secondary-500 transition-colors hover:text-primary-500"
-                    href="mailto:kontakt@kmkagro.com"
+                    href={`mailto:${email}`}
                   >
-                    kontakt@kmkagro.com{' '}
+                    {email}{' '}
                   </Link>
                 </li>
               </ul>
@@ -57,7 +77,7 @@ export const Footer: FC = (): JSX.Element => {
             <div className="mb-6">
               <h5 className="text-xl font-semibold text-secondary-500">Social media</h5>
               <div className="flex gap-x-2 mt-4">
-                <a className="group" href="https://www.facebook.com/KMKAgro2" target="_blank">
+                <a className="group" href={facebookUrl} target="_blank">
                   <svg
                     className="fill-secondary transition-colors duration-300 group-hover:fill-primary"
                     width="32"
@@ -73,7 +93,7 @@ export const Footer: FC = (): JSX.Element => {
                     ></path>
                   </svg>
                 </a>
-                <a className="group" href="https://www.facebook.com/KMKAgro2" target="_blank">
+                <a className="group" href={instagramUrl} target="_blank">
                   <svg
                     className="fill-secondary transition-colors duration-300 group-hover:fill-primary"
                     width="32"
@@ -210,14 +230,12 @@ export const Footer: FC = (): JSX.Element => {
         <div className="h-px bg-gray-dark opacity-80"></div>
         <div className="flex flex-col justify-end pb-12 pt-8 text-xxs md:flex-row text-gray-dark">
           <div className="basis-1/2">
-            <p>
-              COPYRIGHT © {new Date().getFullYear()} KMK Agro Deszczownie. All Rights Reserved.
-            </p>
+            <p>{copyrightText.replace('{year}', new Date().getFullYear().toString())}</p>
           </div>
           <div className="my-4 basis-1/2 flex flex-col md:justify-end gap-4 sm:flex-row md:my-0">
             <Link
               className="relative after:absolute after:block after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 after:content-[''] after:hover:w-full"
-              href="/polityka-prywatnosci"
+              href={privacyPolicyUrl}
             >
               Polityka Prywatności
             </Link>

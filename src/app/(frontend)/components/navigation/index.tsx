@@ -3,12 +3,41 @@
 import { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
-import { LinkBuilder } from '../../../../utils/linkBuilder/linkBuilder.util'
+import { ButtonLink } from '../buttonLink/buttonLink.component'
+import { ButtonSize, ButtonTheme, IconName } from '@/app/(frontend)/enums'
+import { GlobalSetting } from '@/payload-types'
 
-export const Navigation = () => {
+interface NavigationProps {
+  globalSettings?: GlobalSetting | null
+}
+
+type MenuItem = {
+  label: string
+  url: string
+  isExternal?: boolean | null
+  submenu?:
+    | {
+        label: string
+        url: string
+        isExternal?: boolean | null
+        id?: string | null
+      }[]
+    | null
+  id?: string | null
+}
+
+export const Navigation = ({ globalSettings }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false)
   const pathname: string = usePathname()
   const isHome: boolean = pathname === '/' || pathname === '/home'
+
+  // Default values if global settings are not available
+  const logoUrl =
+    globalSettings?.navigation?.logoUrl ||
+    'https://deszczownie.pl/wp-content/uploads/2024/04/logo.png'
+  const menuItems = globalSettings?.navigation?.menuItems || []
+  const contactButtonText = globalSettings?.navigation?.contactButtonText || 'Kontakt'
+  const contactButtonUrl = globalSettings?.navigation?.contactButtonUrl || '/kontakt'
 
   useEffect((): (() => void) => {
     const handleScroll: () => void = (): void => {
@@ -18,6 +47,33 @@ export const Navigation = () => {
     window.addEventListener('scroll', handleScroll)
     return (): void => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const renderMenuItem = (item: MenuItem) => {
+    const linkProps = {
+      href: item.url,
+      ...(item.isExternal && { target: '_blank', rel: 'noopener noreferrer' }),
+    }
+
+    return (
+      <li key={item.label} className={item.submenu?.length ? 'mobile-submenu level-menu' : ''}>
+        <Link {...linkProps}>{item.label}</Link>
+        {item.submenu && item.submenu.length > 0 && (
+          <ul className="submenu">
+            {item.submenu.map((subItem) => (
+              <li key={subItem.label}>
+                <Link
+                  href={subItem.url}
+                  {...(subItem.isExternal && { target: '_blank', rel: 'noopener noreferrer' })}
+                >
+                  {subItem.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </li>
+    )
+  }
 
   return (
     <nav
@@ -33,7 +89,7 @@ export const Navigation = () => {
               <img
                 width="1871"
                 height="252"
-                src="https://deszczownie.pl/wp-content/uploads/2024/04/logo.png"
+                src={logoUrl}
                 className="custom-logo"
                 alt="Deszczownie"
                 decoding="async"
@@ -47,23 +103,10 @@ export const Navigation = () => {
                 isScrolled || !isHome ? 'text-secondary-500' : 'text-white'
               }`}
             >
+              {menuItems.map(renderMenuItem)}
               <li>
-                <Link href="/kim-jestesmy/">Kim jesteśmy</Link>
-              </li>
-              <li className="mobile-submenu level-menu">
-                <Link href={LinkBuilder.offers.category('deszczownie-szpulowe')}>
-                  Deszczownie szpulowe
-                </Link>
-              </li>
-              <li>
-                <a href={LinkBuilder.offers.category('deszczownie-mostowe')}>Deszczownie mostowe</a>
-              </li>
-              <li>
-                <Link href={LinkBuilder.caseStudies.base()}>Nasze realizacje</Link>
-              </li>
-              <li>
-                <Link className="lg:hidden" href="/kontakt">
-                  Kontakt
+                <Link className="lg:hidden" href={contactButtonUrl}>
+                  {contactButtonText}
                 </Link>
               </li>
             </ul>
@@ -75,9 +118,9 @@ export const Navigation = () => {
               className={`button button--primary text-base transition-colors duration-300 ${
                 isScrolled ? 'text-black border-black' : 'text-white border-white'
               }`}
-              href="/kontakt"
+              href={contactButtonUrl}
             >
-              Kontakt
+              {contactButtonText}
             </Link>
           </div>
         </div>

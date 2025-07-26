@@ -96,8 +96,12 @@ export interface Config {
   db: {
     defaultIDType: number;
   };
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'global-settings': GlobalSetting;
+  };
+  globalsSelect: {
+    'global-settings': GlobalSettingsSelect<false> | GlobalSettingsSelect<true>;
+  };
   locale: null;
   user: User & {
     collection: 'users';
@@ -1297,6 +1301,122 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "global-settings".
+ */
+export interface GlobalSetting {
+  id: number;
+  cta: {
+    title?: string | null;
+    buttonText?: string | null;
+    buttonLink?: string | null;
+    backgroundColor?: ('secondary' | 'primary' | 'gray') | null;
+    background: number | Media;
+  };
+  contact?: {
+    companyName?: string | null;
+    address?: string | null;
+    nip?: string | null;
+    phone?: string | null;
+    email?: string | null;
+  };
+  socialMedia?: {
+    facebook?: string | null;
+    instagram?: string | null;
+  };
+  footer?: {
+    logoUrl?: string | null;
+    copyrightText?: string | null;
+    privacyPolicyUrl?: string | null;
+  };
+  navigation?: {
+    logoUrl?: string | null;
+    menuItems?:
+      | {
+          label: string;
+          url: string;
+          isExternal?: boolean | null;
+          submenu?:
+            | {
+                label: string;
+                url: string;
+                isExternal?: boolean | null;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+    contactButtonText?: string | null;
+    contactButtonUrl?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "global-settings_select".
+ */
+export interface GlobalSettingsSelect<T extends boolean = true> {
+  cta?:
+    | T
+    | {
+        title?: T;
+        buttonText?: T;
+        buttonLink?: T;
+        backgroundColor?: T;
+        background?: T;
+      };
+  contact?:
+    | T
+    | {
+        companyName?: T;
+        address?: T;
+        nip?: T;
+        phone?: T;
+        email?: T;
+      };
+  socialMedia?:
+    | T
+    | {
+        facebook?: T;
+        instagram?: T;
+      };
+  footer?:
+    | T
+    | {
+        logoUrl?: T;
+        copyrightText?: T;
+        privacyPolicyUrl?: T;
+      };
+  navigation?:
+    | T
+    | {
+        logoUrl?: T;
+        menuItems?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+              isExternal?: T;
+              submenu?:
+                | T
+                | {
+                    label?: T;
+                    url?: T;
+                    isExternal?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+        contactButtonText?: T;
+        contactButtonUrl?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
