@@ -115,10 +115,11 @@ export const GlobalSettings: GlobalConfig = {
       label: 'Footer Settings',
       fields: [
         {
-          name: 'logoUrl',
-          type: 'text',
-          label: 'Logo URL',
-          defaultValue: 'https://deszczownie.pl/wp-content/uploads/2024/04/logo.png',
+          name: 'logoFooter',
+          type: 'upload',
+          label: 'Logo w stopce',
+          relationTo: 'media',
+          required: true,
         },
         {
           name: 'copyrightText',
@@ -140,10 +141,11 @@ export const GlobalSettings: GlobalConfig = {
       label: 'Navigation Settings',
       fields: [
         {
-          name: 'logoUrl',
-          type: 'text',
-          label: 'Navigation Logo URL',
-          defaultValue: 'https://deszczownie.pl/wp-content/uploads/2024/04/logo.png',
+          name: 'logo',
+          type: 'upload',
+          label: 'Logo',
+          relationTo: 'media',
+          required: true,
         },
         {
           name: 'menuItems',

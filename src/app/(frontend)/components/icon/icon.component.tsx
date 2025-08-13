@@ -15,6 +15,7 @@ import {
   Support,
   Partnership,
   Offers,
+  Chevron,
 } from './icons'
 import { IconName } from '@/app/(frontend)/enums'
 import { IconProps } from './icon.types'
@@ -30,6 +31,8 @@ export const Icon: (props: IconProps) => JSX.Element | null = (
       return <ArrowRight size={size} color={color} className={className} />
     case IconName.Checkmark:
       return <Checkmark size={size} color={color} className={className} />
+    case IconName.Chevron:
+      return <Chevron size={size} color={color} className={className} />
     case IconName.DeliveryAndService:
       return <DeliveryAndService size={size} color={color} className={className} />
     case IconName.Efficiency:

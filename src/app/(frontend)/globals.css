@@ -132,7 +132,7 @@
 }
 
 .nav-links a {
-    @apply transition-colors duration-300 hover:text-primary-500;
+    @apply transition-colors duration-300;
 }
 
 .submenu {
@@ -175,7 +175,7 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: currentColor;
+    /* background: currentColor; */
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
@@ -183,4 +183,28 @@
 }
 .btn-fancy:hover::before {
     transform: scaleX(1);
+}
+
+/* Icon color change on button hover */
+.btn-fancy:hover svg path {
+    stroke: var(--btn-hover-text-color, currentColor);
+}
+
+.btn-fancy:hover svg rect,
+.btn-fancy:hover svg circle,
+.btn-fancy:hover svg polygon {
+    fill: var(--btn-hover-text-color, currentColor);
+}
+
+/* Handle icons that use fill instead of stroke */
+.btn-fancy:hover svg path[fill] {
+    fill: var(--btn-hover-text-color, currentColor);
+}
+
+/* Smooth transition for icon color changes */
+.btn-fancy svg path,
+.btn-fancy svg rect,
+.btn-fancy svg circle,
+.btn-fancy svg polygon {
+    transition: stroke 0.3s ease, fill 0.3s ease;
 }

@@ -1326,13 +1326,13 @@ export interface GlobalSetting {
     facebook?: string | null;
     instagram?: string | null;
   };
-  footer?: {
-    logoUrl?: string | null;
+  footer: {
+    logoFooter: number | Media;
     copyrightText?: string | null;
     privacyPolicyUrl?: string | null;
   };
-  navigation?: {
-    logoUrl?: string | null;
+  navigation: {
+    logo: number | Media;
     menuItems?:
       | {
           label: string;
@@ -1387,14 +1387,14 @@ export interface GlobalSettingsSelect<T extends boolean = true> {
   footer?:
     | T
     | {
-        logoUrl?: T;
+        logoFooter?: T;
         copyrightText?: T;
         privacyPolicyUrl?: T;
       };
   navigation?:
     | T
     | {
-        logoUrl?: T;
+        logo?: T;
         menuItems?:
           | T
           | {

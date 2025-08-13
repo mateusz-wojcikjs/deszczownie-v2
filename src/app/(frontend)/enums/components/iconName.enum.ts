@@ -2,6 +2,7 @@ export enum IconName {
   Address = 'address',
   ArrowRight = 'arrowRight',
   Checkmark = 'checkmark',
+  Chevron = 'chevron',
   DeliveryAndService = 'deliveryAndService',
   Download = 'download',
   Durability = 'durability',

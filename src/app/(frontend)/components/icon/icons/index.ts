@@ -1,6 +1,7 @@
 export { Address } from './address'
 export { ArrowRight } from './arrowRight'
 export { Checkmark } from './checkmark'
+export { Chevron } from './chevron'
 export { Download } from './download'
 export { DeliveryAndService } from './deliveryAndService'
 export { Durability } from './durability'

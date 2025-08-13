@@ -106,10 +106,10 @@ export default async function Offer(props: PageProps) {
           <Hero title={category.title} media={category.categoryImage} type="mediumImpact" />
         )}
         <div className="container flex pt-12 lg:py-16">
-          <div className="w-1/4 pr-6 hidden lg:block">
+          <div className="basis-1/4 pr-6 hidden lg:block">
             <CategorySidebar currentSlug={currentSlug} />
           </div>
-          <div className="flex flex-col gap-4 w-full">
+          <div className="basis-3/4 flex flex-col gap-4 w-full">
             {page?.blocks!.map(
               (block): JSX.Element => (
                 <DynamicContent

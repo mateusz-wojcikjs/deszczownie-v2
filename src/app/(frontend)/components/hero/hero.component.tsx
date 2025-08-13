@@ -67,7 +67,7 @@ export const Hero: FC<HeroProps> = (props: HeroProps): JSX.Element => {
         <div className="container relative z-20 flex flex-col justify-center items-center">
           <h1
             id="hero-title"
-            className="text-4xl 2xl:text-6xl mt-48 lg:mt-4 mb-6 font-semibold text-gray-50 drop-shadow-xl max-w-screen-lg text-center uppercase"
+            className="text-4xl 2xl:text-6xl lg:mt-4 mb-6 font-semibold text-gray-50 drop-shadow-xl max-w-screen-lg text-center uppercase"
           >
             {title}
           </h1>

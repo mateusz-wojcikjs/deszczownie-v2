@@ -7,13 +7,22 @@ export default async function TestPage() {
       <ButtonLink href="/" theme={ButtonTheme.Primary}>
         Test
       </ButtonLink>
+      <ButtonLink href="/" theme={ButtonTheme.PrimaryStill}>
+        Test
+      </ButtonLink>
       <ButtonLink href="/" theme={ButtonTheme.Secondary}>
+        Test
+      </ButtonLink>
+      <ButtonLink href="/" theme={ButtonTheme.SecondaryStill}>
         Test
       </ButtonLink>
       <ButtonLink href="/" theme={ButtonTheme.Text}>
         Test
       </ButtonLink>
-      <ButtonLink href="/" theme={ButtonTheme.Outlined}>
+      <ButtonLink href="/" theme={ButtonTheme.PrimaryOutlined}>
+        Test
+      </ButtonLink>
+      <ButtonLink href="/" theme={ButtonTheme.SecondaryOutlined}>
         Test
       </ButtonLink>
     </div>

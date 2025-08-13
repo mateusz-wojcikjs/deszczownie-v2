@@ -1,14 +1,14 @@
-import { ButtonLink } from '../buttonLink/buttonLink.component'
-import { ButtonSize, ButtonTheme, IconName } from '@/app/(frontend)/enums'
-import { GlobalSetting } from '@/payload-types'
-import Image from 'next/image'
+'use client'
 
-interface CtaProps {
-  globalSettings?: GlobalSetting | null
-  backgroundImage?: string | null
-}
+import { ButtonLink } from '../buttonLink/buttonLink.component'
+import { ButtonSize, ButtonTheme, IconName, Routing } from '@/app/(frontend)/enums'
+import { CtaProps } from './cta.types'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 
 export const Cta = ({ globalSettings, backgroundImage }: CtaProps) => {
+  const currentPath = usePathname()
+
   const title = globalSettings?.cta?.title || 'Dlaczego deszczownie od KMK Agro?'
   const buttonText = globalSettings?.cta?.buttonText || 'Kontakt'
   const buttonLink = globalSettings?.cta?.buttonLink || '/kontakt'
@@ -25,14 +25,21 @@ export const Cta = ({ globalSettings, backgroundImage }: CtaProps) => {
     }
   }
 
+  if (currentPath === `/${Routing.Contact}`) {
+    return null
+  }
+
   return (
     <div className="w-full h-full flex items-center relative min-h-[33vh]">
-      <div
-        className={`absolute top-0 left-0 ${getBackgroundColorClass()} w-full h-full z-0 opacity-90`}
-      >
+      <div className={`absolute top-0 left-0 ${getBackgroundColorClass()} w-full h-full z-0`}>
         <div className="absolute top-0 left-0 w-full h-full z-0">
           {backgroundImage && (
-            <Image src={backgroundImage} alt="Background" fill className="object-cover" />
+            <Image
+              src={backgroundImage}
+              alt="Background"
+              fill
+              className="object-cover opacity-20"
+            />
           )}
         </div>
       </div>
@@ -49,7 +56,7 @@ export const Cta = ({ globalSettings, backgroundImage }: CtaProps) => {
             <ButtonLink
               icon={IconName.ArrowRight}
               href={buttonLink}
-              theme={ButtonTheme.Primary}
+              theme={ButtonTheme.Secondary}
               size={ButtonSize.Large}
             >
               {buttonText}
